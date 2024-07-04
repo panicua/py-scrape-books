@@ -17,9 +17,6 @@ class BooksSpider(scrapy.Spider):
     allowed_domains = ["books.toscrape.com"]
     start_urls = ["https://books.toscrape.com"]
 
-    def __init__(self, **kwargs: Any) -> None:
-        super().__init__(**kwargs)
-
     def parse(self, response: Response, **kwargs) -> Any:
         for book in response.css("article.product_pod"):
             book_detailed_page = response.urljoin(
